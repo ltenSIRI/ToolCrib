@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tool Crib</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div>
+            
+            <div class="header"><center>
+  <img src="https://drive.google.com/uc?id=1BBUnOucwl9mYJ0qy1j12y7LFgt3UskwT" alt="logo" />
+  <h1><center>Tool Crib</center></h1></center>
+</div>
+            <form id="form" target="_self" onsubmit="" action="">
+                <fieldset>
+                    <label>Date & Time:</label>
+                    <input id="datetime" type="datetime-local" name="datetime">
+                </fieldset>
+                <fieldset>
+                    <label>Tool Code:</label>
+                    <textarea id="toolcode" name="toolcode"></textarea>
+                </fieldset>
+                <fieldset>
+                    <label>From:</label>
+                    <select> ="from" size="4" multiple>
+                    <option value="Shop">Shop</option>
+                    <option value="Mark">Mark</option>
+                    <option value="Clarissa">Clarissa</option>
+                    <option value="Ben">Ben</option>
+                </select>
+                </fieldset> 
+                <fieldset>
+                    <label>To:</label>
+                    <select> ="from" size="4" multiple>
+                    <option value="Shop">Shop</option>
+                    <option value="Mark">Mark</option>
+                    <option value="Clarissa">Clarissa</option>
+                    <option value="Ben">Ben</option>
+                </select>
+                </fieldset>    
+                <fieldset>
+                    <label>Section:</label>
+                    <select> ="section" size="6" multiple>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                </select>
+                </fieldset>
+                 <fieldset>
+                    <label>Shelf:</label>
+                    <select> ="shelf" size="5" multiple>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                </fieldset>
+                <fieldset>
+                    <label>Row:</label>
+                    <select> ="row" size="5" multiple>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                </fieldset>
+                <div style="width: 100%; display: block; float: right;">
+                    <center><button id="send" type="submit">
+                        Send
+                    </button></center>
+                </div>
+            </form>
+        </div>
+        <script type="text/javascript">
+            function postToGoogle() {
+                var field1 = $("input[type='radio'][name='qs1']:checked").val();
+                var field2 = $("input[type='radio'][name='qs2']:checked").val();
+                var field3 = $('#feed').val();
+ 
+                $.ajax({
+                    url: "https://docs.google.com/forms/d/FORM_KEY/formResponse",
+                    data: {"entry.1023121230": field3, "entry.1230072460": field1, "entry.2113237615": field2},
+                    type: "POST",
+                    dataType: "xml",
+                    statusCode: {
+                        0: function() {
+                            //Success message
+                        },
+                        200: function() {
+                            //Success Message
+                        }
+                    }
+                });
+            }
+             
+            $(document).ready(function(){
+                $('#form').submit(function() {
+                    postToGoogle();
+                    return false;
+                });
+            });
+        </script>
+    </body>
+</html>
